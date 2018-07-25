@@ -8,6 +8,10 @@
 </head>
 <body>
 	<form class="form-signin" action="./login" method="post">
+		<div class="alert alert-warning">
+    		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong>Warning!</strong> 该用户不存在!
+  		</div>
   		<h2 class="form-signin-heading">用户登录</h2>
   		<input type="text" name="email" class="form-control" placeholder="电子邮件或用户名" required autofocus>
   		<input type="password" name="password" class="form-control" placeholder="密码" required>

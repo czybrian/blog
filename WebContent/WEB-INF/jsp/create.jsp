@@ -1,45 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
 	<meta charset="UTF-8">
-  	<title>文章列表</title> 	
+  	<title>创建文章</title>
+  	
   	<link rel="stylesheet" href="./static/css/blog.css">
   	<link rel="stylesheet" href="./static/css/sidebar.css">
   	<%@include file="common/head.jsp" %>
 </head>
 <body>
 	<jsp:include page="common/nav.jsp">
-  		<jsp:param name="user" value="${sessionScope.currentUser.username}" />
+		<jsp:param name="user" value="${sessionScope.currentUser.username }"/>
 	</jsp:include>
 	
 	<div class="container">
   		<div class="page-header">
-    		<h1>Brian 的博客
-      			<small>Mi nunc congue nunc, ante felis vestibulum bibendum.</small>
-    		</h1>
+    		<h2>新建博客
+      			<small>在这里新建一篇博客</small>
+    		</h2>
   		</div>
   		<div class="row">
     		<div class="col-sm-8">
-    			<% for(Blog blog : (List<Blog>)request.getAttribute("blogs")) { %>
-    			<c:forEach var="blog" items="${blogs}">
-    			<div class="blog-post">
-  					<h3 class="blog-post-title"><a href="./item.html">${blog.title}</a></h3>
-  					<p class="blog-post-meta">2015年2月3日 分组：<a href="#">Web开发</a></p>
-  					<p class="blog-post-content">${blog.content}</p>
-				</div>
-				<hr/>
-				<% } %>
-				</c:forEach>
-				
-				<nav>
-  					<ul class="pager">
-    					<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> 上一页</a></li>
-    					<li class="next"><a href="#">下一页 <span aria-hidden="true">&rarr;</span></a></li>
-  					</ul>
-				</nav>
+    			<form>
+    				<div class="form-group">
+    					<label for="title">标题</label>
+    					<input type="text" class="form-control" id="title" placeholder="文章的标题" autofocus="">
+  					</div>
+  					<div class="form-group">
+    					<label for="content">内容</label>
+    					<textarea class="form-control" id="content" placeholder="文章的内容" rows="18"></textarea>
+  					</div>
+  					<button type="submit" class="btn pull-right btn-primary">保存</button>
+    			</form>
     		</div>
     		<div class="col-sm-3 col-sm-offset-1">
     			<div class="sidebar-module sidebar-module-inset">
@@ -64,6 +58,5 @@
 	</div>
 	
 	<%@include file="common/footer.jsp" %>
-	
 </body>
 </html>
